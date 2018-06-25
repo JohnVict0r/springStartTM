@@ -8,6 +8,10 @@ public class EventosController {
 	
 	@RequestMapping("/eventos/novo")
 	public String novo() {
-		return "eventos/cadastro";
+		return "eventos/cadastrar";
+	}
+	@RequestMapping("/eventos/listar")
+	public String listar() {
+		return "eventos/listar";
 	}
 }

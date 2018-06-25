@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"	
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	>
+<head>
+<meta charset="UTF-8"/>
+<title>Cadastro de Atletas</title>
+	
+	<script th:src="@{/js/estados_cidades.js}" > </script>
+	<script th:src="@{/js/estados_cidadesJSON.js}" > </script>
+ 	
+</head>
+<body>
+<section layout:fragment="conteudo">
+
+
+    <div class="page-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h1>
+                            Cadastrar Atleta
+                        </h1>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    <div class="container-fluid">
+
+        <form method="POST" class="form-vertical  js-form-loading">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                <label for="nome">Nome</label>
+
+                <input id="nome" type="text" class="form-control" />
+                </div>
+            </div>
+             <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="sobrenome" >Sobrenome</label>
+                    <input id="sobrenome" type="text"  name="sobrenome" class="form-control"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+
+
+                    <label>Sexo</label>
+                    <select id="sexo" class="form-control">
+                      <option value="m">Masculino</option>
+                      <option value="f">Feminino</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="valor">Data de Nascimento</label>
+
+
+                    <input id="dataNascimento" type="date" class="form-control js-moeda" name="dataNascimento"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">CPF</label>                          
+                              <input type="text" name="cpf" class="form-control" maxlength="14" OnKeyPress="return formatar('###.###.###-##', this);" placeholder="999.999.999-99"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+
+                        <div class="form-group">
+                            <label for="rg" class=" col-form-label">RG</label>
+                            <input type="text" name="tel" class="form-control" maxlength="12" OnKeyPress="return formatar('##.###.###-#', this)" placeholder="99.999.999-9"/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <div class="form-group">
+
+                            <label for="tel" class=" col-form-label">Telefone</label>
+                            <input type="text" name="tel" class="form-control" maxlength="12" OnKeyPress="return formatar('## ####-####', this);" placeholder="(99)9999-9999"/>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <div class="form-group">
+
+                            <label for="cel" class=" col-form-label">Celular</label>
+                            <input type="text" name="cel" class="form-control" maxlength="14" OnKeyPress="return formatar('## # ####-####', this);" placeholder="(99)9 9999-9999"/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <div class="form-group">
+                            <label class=" col-form-label">UF</label>
+                                <select id="estados" class="form-control">
+                                  <option value="">Selecione o estado</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xs-6 col-sm-6">
+                        <div class="form-group">
+                            <label class=" col-form-label">Cidade</label>
+                                <select id="cidades" class="form-control"> </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="row">
+                <div class="col-md-9 col-xs-9 col-sm-9 ">
+
+
+
+                </div>
+
+                <div class="col-md-3 col-xs-3 col-sm-3 ">
+                    <div class="aw-page-header-controls">
+                        <button style=" margin:2px;" type="reset" class="btn btn-primary">
+
+                            Limpar
+                            
+                        </button>
+                        <a></a>
+                        <button style=" margin:2px;" type="submit" class="btn btn-primary">
+
+                            Cadastrar
+                            
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+</section>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

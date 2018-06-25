@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"	
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	>
+<head>
+<meta charset="UTF-8"/>
+<title>Cadastro de Eventos</title>
+</head>
+<body>
+<section layout:fragment="conteudo">
+<div class="page-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h1>
+                            Cadastrar Eventos
+                        </h1>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+	<form class="form-control">
+	  <div class="form-row">
+	    <div class="form-group col-md-12">
+	      <label for="inputEmail4">Nome</label>
+	      <input type="text" class="form-control" id="nome" placeholder="Nome"/>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="inputAddress">Endereço</label>
+	    <input type="text" class="form-control" id="endereco"/>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-6">
+	      <label for="cidade">Cidade</label>
+	      <input type="text" class="form-control" id="cidade"/>
+	    </div>
+	    <div class="form-group col-md-4">
+	      <label for="estado">Estado</label>
+	      <select id="estado" class="form-control">
+	        <option>Choose...</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-row">
+	    <div class="form-group col-md-4">
+	      <label for="dataInicio">Data de inicio</label>
+	      <input type="date"/>
+	    </div>
+	    <div class="form-group col-md-4">
+	      <label for="dataFim">Data de fim</label>
+	      <input type="date"/>
+	    </div>
+	  </div>
+	  <button type="submit" class="btn btn-primary">Cadastrar</button>
+	</form>
+</section>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
