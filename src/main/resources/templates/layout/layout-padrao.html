@@ -11,7 +11,7 @@
 	<title>Start TM</title>
 	
 	<!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     
 	
 	<script th:src="@{/js/valid.js}" > </script>
@@ -41,13 +41,13 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="/">
                   <span data-feather="home"></span>
                   Dashboard
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/eventos">
                   <span data-feather="file"></span>
                   Eventos
                 </a>
@@ -131,10 +131,7 @@
           </div>
         </nav>
 		
-		<section class="js-content" layout:fragment="content"></section>
-		
-		
-		
+		<section style="padding-top:10px" class="js-content col-md-9 ml-sm-auto col-lg-10 px-4" layout:fragment="content"></section>
         
       </div>
       
@@ -145,7 +142,6 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>

@@ -2,26 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"	
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	>
+	layout:decorate="~{layout/layout-padrao}">
 <head>
 <meta charset="UTF-8"/>
 <title>Cadastro de Eventos</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
-<section layout:fragment="conteudo">
-<div class="page-header">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xs-8">
-                        <h1>
-                            Cadastrar Eventos
-                        </h1>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
+<section layout:fragment="content">
+<div class="card">
+  <div class="card-header">
+    Cadastrar Eventos
+  </div>
+  <div class="card-body">
+    <div class="row">
 	<form class="form-control">
 	  <div class="form-row">
 	    <div class="form-group col-md-12">
@@ -57,6 +50,11 @@
 	  </div>
 	  <button type="submit" class="btn btn-primary">Cadastrar</button>
 	</form>
+		  
+	</div>
+</div>
+</div>
+
 </section>
 <script src="/js/bootstrap.min.js"></script>
 </html>
