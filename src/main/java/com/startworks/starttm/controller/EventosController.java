@@ -10,7 +10,6 @@ public class EventosController {
 	public String eventos() {
 		return "eventos/portalEventos";
 	}
-	
 	@RequestMapping("/eventos/novo")
 	public String novo() {
 		return "eventos/cadastrar";
@@ -19,4 +18,8 @@ public class EventosController {
 	public String listar() {
 		return "eventos/listar";
 	}
+	
+	
+	
+	
 }

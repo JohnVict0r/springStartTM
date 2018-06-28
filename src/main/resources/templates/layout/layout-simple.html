@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<title>Start TM</title>
+
+	<link rel="stylesheet" type="text/css" th:href="@{/css/vendors.min.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/starttm.css}"/>
+	
+</head>
+<body class="starttm-layout-simple-page">
+
+	<div class="starttm-layout-simple-page__container">
+		<th:block layout:fragment="content"/>
+	</div>
+
+<script th:src="@{/js/vendors.min.js}"></script>
+</body>
+</html>
