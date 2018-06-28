@@ -6,18 +6,18 @@
 	
 	<th:block layout:fragment="content">
 		<form th:action="@{/login}" method="POST">
-			<div class="wines-simple-panel">
-				<img alt="Anthonini" th:src="@{/layout/images/logo-small.png}"/>
+			<div class="starttm-simple-panel">
+				<img alt="Start TM"/>
 				
-				<div class="wines-simple-panel__message">
+				<div class="starttm-simple-panel__message">
 					Please, login
 				</div>
 				
-				<div class="wines-simple-panel__message is-error" th:if="${#bools.isTrue(param.error)}">
+				<div class="starttm-simple-panel__message is-error" th:if="${#bools.isTrue(param.error)}">
 					User or password don't match
 				</div>
 				
-				<div class="wines-simple-panel__box">
+				<div class="starttm-simple-panel__box">
 					<div class="form-group has-feedback">
 						<input type="text" class="form-control input-lg" placeholder="login"
 							autofocus="autofocus" name="username"/>
@@ -30,7 +30,7 @@
 							<span class="glyphicon glyphicon-lock form-control-feedback"></span>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-lg wines-btn-full-width">Entrar</button>
+						<button type="submit" class="btn btn-primary btn-lg starttm-btn-full-width">Entrar</button>
 					</div>
 				</div>
 			</div>
