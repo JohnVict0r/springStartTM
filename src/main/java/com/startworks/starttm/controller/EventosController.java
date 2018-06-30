@@ -4,17 +4,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/starttm/eventos")
 public class EventosController {
 	
-	@RequestMapping("/eventos")
+	@RequestMapping("")
 	public String eventos() {
 		return "eventos/portalEventos";
 	}
-	@RequestMapping("/eventos/novo")
+	@RequestMapping("/cadastrar")
 	public String novo() {
 		return "eventos/cadastrar";
 	}
-	@RequestMapping("/eventos/listar")
+	@RequestMapping("/listar")
 	public String listar() {
 		return "eventos/listar";
 	}
