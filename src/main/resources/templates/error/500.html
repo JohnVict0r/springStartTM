@@ -9,16 +9,24 @@
 	
 <th:block layout:fragment="content">
 	<div class="wines-error-panel">
-		<h1 class="wines-error-panel__code">
-			<i class="fa  fa-exclamation-triangle"></i> 500
-		</h1>
+		<header class="header-content">
+				<h1 class="wines-error-panel__code">
+					<i class="fa  fa-location-arrow"></i> 500
+				</h1>
+				<h2 class="title-1">Erro interno do sistema</h2>				
+		</header>
 		
-		<h2 class="wines-error-panel__title">Server Error</h2>
-		
-		<div class="wines-error-panel__description">
-			Desculpe, algo realmente estranho aconteceu.Tente novamente ou entre em contato se precisar de ajuda.
-			<br/><br/>
-			<a href="javascript:history.back()" class="btn  btn-primary">Voltar</a>
+		<div class="wines-error-panel__description">						
+			<p>Ocorreu uma instabilidade do sistema que impediu a exibição do conteúdo. Nossa equipe técnica foi notificada e está trabalhando para resolver o problema.</p>
+
+			<h2 class="title-5">Você pode:</h2>
+			<ol>
+				<li>Verificar se digitou corretamente o endereço desejado.</li>
+				<li>Retornar à <a href="/starttm/public">página inicial</a>.</li>
+				<li>Retornar à <a href="javascript:history.back()">página anterior</a>.</li>				
+			</ol>
+			<!-- <p>Se o problema persistir, entre em contato através de um dos <a href="#">canais de atendimento</a>.</p> -->
+
 		</div>
 	</div>
 

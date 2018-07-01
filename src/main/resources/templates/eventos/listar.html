@@ -22,7 +22,7 @@
 		
 		<div class="alert  alert-success  alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<span ></span>
+			<p><strong>Sucesso!</strong> Evento cadastrado!</p>
 		</div>
 		
 		<form method="GET" class="form-vertical js-form-loading">		
@@ -74,9 +74,9 @@
 	</div>
 
 <div class="modal fade" id="deleteConfirmationModal" role="dialog">
-		<div class="modal-dialog"></div>
+		<div class="modal-dialog">
 		<div class="modal-content">
-			<form th:action="@{/eventos/listar}" method="POST">
+			<form th:action="@{/starttm/eventos/listar}" method="POST">
 				<input type="hidden" name="_method" value="DELETE">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -85,13 +85,14 @@
 					<h4 class="modal-title">Remover Evento</h4>
 				</div>
 				<div class="modal-body">
-					<span>Are you sure?</span>
+					Tem certeza?
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					<button type="submit" class="btn btn-primary">Excluir</button>
 				</div>
 			</form>
+			</div>
 		</div>
 </div>
 </section>
