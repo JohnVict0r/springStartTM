@@ -17,7 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import com.startworks.starttm.model.Categoria;
-import com.startworks.starttm.model.Eventos.TipoEvento;
+
 
 @Entity
 public class Eventos {
@@ -50,7 +50,7 @@ public class Eventos {
 	@Enumerated(EnumType.STRING)
 	private StatusEvento status;
 	
-	private TipoEvento tipo;
+	//adicionar tipo
 	
 	private ArrayList<Categoria> categorias;
 	
@@ -128,13 +128,7 @@ public class Eventos {
 		this.status = status;
 	}
 
-	public TipoEvento getTipo() {
-		return tipo;
-	}
 
-	public void setTipo(TipoEvento tipo) {
-		this.tipo = tipo;
-	}
 
 	public ArrayList<Categoria> getCategorias() {
 		return categorias;
