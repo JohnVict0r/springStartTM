@@ -1,7 +1,7 @@
 package com.startworks.starttm.model.Eventos;
 
 import java.math.BigDecimal;
-
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -16,8 +16,11 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+import com.startworks.starttm.model.Categoria;
+import com.startworks.starttm.model.Eventos.TipoEvento;
+
 @Entity
-public class Evento {
+public class Eventos {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,12 +50,11 @@ public class Evento {
 	@Enumerated(EnumType.STRING)
 	private StatusEvento status;
 	
-	@Enumerated(EnumType.STRING)
 	private TipoEvento tipo;
 	
-	//lista de categorias disponíveis no evento
-	//@Enumerated(EnumType.STRING)
-	//private ArrayList<CategoriaEvento> categorias;
+	private ArrayList<Categoria> categorias;
+	
+	
 
 	public long getCodigo() {
 		return codigo;
@@ -134,7 +136,13 @@ public class Evento {
 		this.tipo = tipo;
 	}
 
-	
+	public ArrayList<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(ArrayList<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 	
 
 	@Override
@@ -153,13 +161,10 @@ public class Evento {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Evento other = (Evento) obj;
+		Eventos other = (Eventos) obj;
 		if (codigo != other.codigo)
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 }
