@@ -6,5 +6,4 @@ public enum StatusEvento {
 	FINALIZADO,
 	EXECUCAO;
 	
-	
 }

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.startworks.starttm.model.Eventos.Eventos;
 
-public interface EventosRepositorio extends JpaRepository<Eventos, Long>{
+public interface EventosRepository extends JpaRepository<Eventos, Long>{
 
 }
