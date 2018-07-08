@@ -3,19 +3,17 @@ package com.startworks.starttm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.startworks.starttm.model.Eventos.Eventos;
-import com.startworks.starttm.repository.EventosRepository;
+import com.startworks.starttm.repository.EventoRepository;
 
 @Controller
 @RequestMapping("/starttm/eventos")
 public class EventosController {
 	
 	@Autowired
-	private EventosRepository eventos;
+	private EventoRepository eventos;
 	
 	
 	@RequestMapping("")

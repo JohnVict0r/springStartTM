@@ -1,18 +1,28 @@
 package com.startworks.starttm.model.Eventos;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -20,11 +30,13 @@ import com.startworks.starttm.model.Categoria;
 
 
 @Entity
-public class Eventos {
+@Table(name="evento")
+public class Evento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long codigo;
+	@Column(name="id_evento")
+	private long id;
 	
 	private String titulo;
 
@@ -33,7 +45,6 @@ public class Eventos {
 	private String estado;
 	
 	private String endereco;
-	
 	
 	//Adicionar horario de inicio e fim nas datas
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -50,18 +61,36 @@ public class Eventos {
 	@Enumerated(EnumType.STRING)
 	private StatusEvento status;
 	
-	//adicionar tipo
+	@ManyToOne(fetch= FetchType.EAGER)
+	@JoinColumn(name="id_tipo_evento",insertable=true,updatable=true)
+	@Cascade(CascadeType.SAVE_UPDATE)
+	private TipoEvento tipo;
 	
-	private ArrayList<Categoria> categorias;
-	
+	@ManyToMany(fetch= FetchType.LAZY)
+	@JoinTable(name="evento_categoria",
+				joinColumns=@JoinColumn(name="id_evento"),
+				inverseJoinColumns = @JoinColumn(name="id_categoria"))
+	private Collection<Categoria> categoria;
 	
 
-	public long getCodigo() {
-		return codigo;
+	public TipoEvento getTipo() {
+		return tipo;
 	}
 
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
+	public void setTipo(TipoEvento tipo) {
+		this.tipo = tipo;
+	}
+
+	public void setCategoria(Collection<Categoria> categoria) {
+		this.categoria = categoria;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long codigo) {
+		this.id = codigo;
 	}
 
 	public String getTitulo() {
@@ -127,23 +156,13 @@ public class Eventos {
 	public void setStatus(StatusEvento status) {
 		this.status = status;
 	}
-
-
-
-	public ArrayList<Categoria> getCategorias() {
-		return categorias;
-	}
-
-	public void setCategorias(ArrayList<Categoria> categorias) {
-		this.categorias = categorias;
-	}
 	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (codigo ^ (codigo >>> 32));
+		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
 
@@ -155,8 +174,8 @@ public class Eventos {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Eventos other = (Eventos) obj;
-		if (codigo != other.codigo)
+		Evento other = (Evento) obj;
+		if (id != other.id)
 			return false;
 		return true;
 	}

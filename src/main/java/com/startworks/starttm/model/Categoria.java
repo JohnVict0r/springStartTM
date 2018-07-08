@@ -1,17 +1,21 @@
 package com.startworks.starttm.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="categoria")
 public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_categoria")
 	private long id;
 	
 	private String divisao;
@@ -19,7 +23,8 @@ public class Categoria {
 	@Enumerated(EnumType.STRING)
 	private CategoriaTipo tipo;
 	
-	private String modalidade;
+	@Enumerated(EnumType.STRING)
+	private Sexo modalidade;
 	
 	private Boolean paraolimpico;
 
@@ -47,11 +52,11 @@ public class Categoria {
 		this.tipo = tipo;
 	}
 
-	public String getModalidade() {
+	public Sexo getModalidade() {
 		return modalidade;
 	}
 
-	public void setModalidade(String modalidade) {
+	public void setModalidade(Sexo modalidade) {
 		this.modalidade = modalidade;
 	}
 

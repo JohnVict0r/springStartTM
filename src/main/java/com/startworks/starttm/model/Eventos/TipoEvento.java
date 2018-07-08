@@ -1,21 +1,27 @@
 package com.startworks.starttm.model.Eventos;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="tipo_evento")
 public class TipoEvento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id_tipo_evento")
 	private long id;
 	
 	private String nome;
 	
 	private Boolean cbtm;
+	
+	private int peso;
 
 	public long getId() {
 		return id;
@@ -61,6 +67,14 @@ public class TipoEvento {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public int getPeso() {
+		return peso;
+	}
+
+	public void setPeso(int peso) {
+		this.peso = peso;
 	}
 	
 	
