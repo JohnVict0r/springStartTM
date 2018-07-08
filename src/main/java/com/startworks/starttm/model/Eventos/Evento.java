@@ -81,6 +81,10 @@ public class Evento {
 		this.tipo = tipo;
 	}
 
+	public Collection<Categoria> getCategoria() {
+		return categoria;
+	}
+
 	public void setCategoria(Collection<Categoria> categoria) {
 		this.categoria = categoria;
 	}
