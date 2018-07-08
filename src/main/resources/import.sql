@@ -7,3 +7,6 @@ insert into tipo_evento(nome,cbtm,peso)values ("Brasileiro", false,8);
 insert into evento(titulo,status,id_tipo_evento)values ("1º estadual 2018", "FINALIZADO",1); 
 insert into evento(titulo,status,id_tipo_evento)values ("2º estadual 2018", "ABERTO",1); 
 insert into evento(titulo,status,id_tipo_evento) values ("3º estadual 2018", "ABERTO",1);        
+insert into evento(titulo,status,id_tipo_evento)values ("Brasileiro de verão 2018", "FINALIZADO",4); 
+insert into evento(titulo,status,id_tipo_evento)values ("Brasileiro de inverno 2018", "ABERTO",4); 
+insert into evento(titulo,status,id_tipo_evento) values ("Copa brasil - Nordeste - 2018", "ABERTO",3);        
