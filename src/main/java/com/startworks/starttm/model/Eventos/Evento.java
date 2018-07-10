@@ -20,9 +20,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -38,8 +40,10 @@ public class Evento {
 	@Column(name="id_evento")
 	private long id;
 	
+	@NotBlank(message="O Titulo não pode estar em branco")
 	private String titulo;
-
+	
+	
 	private String cidade;
 
 	private String estado;

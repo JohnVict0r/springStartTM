@@ -1,6 +1,6 @@
-var Wines = Wines || {};
+var Eventos = evento || {};
 
-Wines.DeleteConfirmatioModal = (function() {
+Eventos.DeleteConfirmatioModal = (function() {
 	function DeleteConfirmatioModal() {
 		this.modal = $('#deleteConfirmationModal');
 		this.form = this.modal.find('form');
@@ -15,7 +15,7 @@ Wines.DeleteConfirmatioModal = (function() {
 		var name = button.data('name');
 		var url = button.data('url-delete')
 		
-		this.modal.find('.modal-body span').html('Are you sure you want to delete <strong>'+name+'</sstrong>?');
+		this.modal.find('.modal-body span').html('tem certeza que deseja excluir <strong>'+name+'</sstrong>?');
 		
 		this.form.attr('action', url);
 	}
@@ -24,6 +24,6 @@ Wines.DeleteConfirmatioModal = (function() {
 }());
 
 $(function () {
-	var deleteConfirmatioModal = new Wines.DeleteConfirmatioModal();
+	var deleteConfirmatioModal = new Eventos.DeleteConfirmatioModal();
 	deleteConfirmatioModal.initiate();
 });

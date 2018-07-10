@@ -15,30 +15,18 @@
 
 	<div class="page-header">
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col-xs-8">
+				<div class="col-md-8">
 					<h1>
-						Cadastro vinho
+						Cadastro Evento
 					</h1>
 				</div>
-
-				<div class="col-xs-4">
-					<div class="aw-page-header-controls">
-						<a class="btn btn-primary" th:href="@{/starttm/eventos/cadastrar}">
-							<i class="fa fa-table"></i>
-
-							<span class="hidden-xs hidden-sm">Lista eventos</span>
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 
 	<div class="container-fluid">
-
-		
-	<form method="POST" class="form-vertical  js-form-loading"
+	<div class="card new-card">
+	
+	<form method="POST" class="form-horizontal js-form-loading"
 			th:object="${evento}" th:action="@{/starttm/eventos/cadastrar}">
 			
 			<div class="alert  alert-danger  alert-dismissible" role="alert"
@@ -59,60 +47,57 @@
 				<i class="fa fa-check-circle"></i>
 
 				<span th:text="${mensagem}">Mensagem sucesso!</span>
-			</div>
+			</div>								
 			
-			<input type="hidden" th:field="*{id}"/>
-			<div class="form-row">
-			    <div class="form-group col-md-12">
-			      <label for="inputEmail4">Titulo</label>
-			      <input th:field="*{titulo}" type="text" class="form-control" id="titulo" placeholder="Titulo"/>
-			    </div>
+			<div class="form-group row col-md-12">				   
+			      <label for="titulo">Titulo</label>
+			      <input th:field="*{titulo}" type="text" class="form-control" id="titulo" placeholder="Titulo"/>				    
 			</div>
-			<div class="form-group">
-			    <label for="inputAddress">Endereço</label>
+			<div class="form-group row col-md-12">
+			    <label for="endereco">Endereço</label>
 			    <input th:field="*{endereco}" type="text" class="form-control" id="endereco"/>
 			</div>
-			<div class="form-row">
-			    <div class="form-group col-md-6">
-			      <label for="cidade">Cidade</label>
-			      <input th:field="*{cidade}" type="text" class="form-control" id="cidade"/>
-			    </div>
+			<div class="form-group row col-md-12">
 			    <div class="form-group col-md-4">
 			      <label for="estado">Estado</label>
 			      <select id="estado" class="form-control">
 			        <option>Choose...</option>
+			        <option>Estado</option>
 			      </select>
 			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="cidade">Cidade</label>
+			      <select th:value="*{cidade}" id="cidade" class="form-control">
+			        <option>Choose...</option>
+			        <option>cidade</option>
+			      </select>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="estado">status</label>
+			      <select id="status" class="form-control"
+						th:field="*{status}">
+						<option value="">Selecione o status</option>
+						<option th:each="status: ${status}"
+							th:value="${status}" th:text="${status}">Opção 1</option>
+				</select>
+			    </div>
 			</div>
-			<!-- <div class="form-row">
+			<div class="form-row">
 			    <div class="form-group col-md-4">
 			      <label for="dataInicio">Data de inicio</label>
-			      <input th:field="*{dataInicio}" type="date"/>
+			      <input th:date="*{dataInicio}" type="date"/>
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="dataFim">Data de fim</label>
-			      <input th:field="*{dataFim}" type="date"/>
+			      <input th:date="*{dataFim}" type="date"/>
 			    </div>
-			</div>-->			 
-			<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="status">status</label>
+			</div>			 				
 
-							<select id="status" class="form-control"
-								th:field="*{status}">
-								<option value="">Selecione o status</option>
-								<option th:each="status: ${status}"
-									th:value="${status}" th:text="${status}">Opção 1</option>
-							</select>
-						</div>
-					</div>
-				</div>
-
-			<div class="form-group">
+			<div class="form-group row col-md-12">
 				<button class="btn  btn-primary" type="submit">Salvar</button>
 			</div>
-		</form>
+		</div>
+	</form>
 	</div>
 </section>
 
