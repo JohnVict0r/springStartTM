@@ -17,7 +17,6 @@ public class StarttmApplication {
 
 	@Bean
 	public LocaleResolver localeResolver() {
-		
 		return new FixedLocaleResolver(new Locale("pt", "BR"));
 	}
 }

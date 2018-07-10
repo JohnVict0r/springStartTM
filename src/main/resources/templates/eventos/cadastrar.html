@@ -6,58 +6,114 @@
 <head>
 <meta charset="UTF-8"/>
 <title>Cadastro de Eventos</title>
-<link href="/css/bootstrap.min.css" rel="stylesheet"/>
-</head>
-<script th:src="@{/js/jquery-1.9.1.js}" > </script>
-<script th:src="@{/js/estados_cidades.js}" > </script>
-<script th:src="@{/js/estados_cidadesJSON.js}" > </script>
-<section layout:fragment="content">
-<div class="card">
-  <div class="card-header">
-    Cadastrar Eventos
-  </div>
-  <div class="card-body">
-    <div class="row">
-	<form class="form-control">
-	  <div class="form-row">
-	    <div class="form-group col-md-12">
-	      <label for="inputEmail4">Nome</label>
-	      <input type="text" class="form-control" id="nome" placeholder="Nome"/>
-	    </div>
-	  </div>
-	  <div class="form-group">
-	    <label for="inputAddress">Endereço</label>
-	    <input type="text" class="form-control" id="endereco"/>
-	  </div>
-	  <div class="form-row">
-	    <div class="form-group col-md-6">
-	      <label for="cidade">Cidade</label>
-	      <input type="text" class="form-control" id="cidade"/>
-	    </div>
-	    <div class="form-group col-md-4">
-	      <label for="estado">Estado</label>
-	      <select id="estado" class="form-control">
-	        <option>Choose...</option>
-	      </select>
-	    </div>
-	  </div>
-	  <div class="form-row">
-	    <div class="form-group col-md-4">
-	      <label for="dataInicio">Data de inicio</label>
-	      <input type="date"/>
-	    </div>
-	    <div class="form-group col-md-4">
-	      <label for="dataFim">Data de fim</label>
-	      <input type="date"/>
-	    </div>
-	  </div>
-	  <button type="submit" class="btn btn-primary">Cadastrar</button>
-	</form>
-		  
-	</div>
-</div>
-</div>
 
+</head>
+<script th:src="@{/layout/vendors/jquery/jquery.js}"></script>
+<script th:src="@{/layout/javascripts/estados_cidadesJSON.js}"></script>
+<script th:src="@{/layout/javascripts/estados_cidades.js}"></script>
+<section layout:fragment="content">
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-8">
+					<h1>
+						Cadastro vinho
+					</h1>
+				</div>
+
+				<div class="col-xs-4">
+					<div class="aw-page-header-controls">
+						<a class="btn btn-primary" th:href="@{/starttm/eventos/cadastrar}">
+							<i class="fa fa-table"></i>
+
+							<span class="hidden-xs hidden-sm">Lista eventos</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		
+	<form method="POST" class="form-vertical  js-form-loading"
+			th:object="${evento}" th:action="@{/starttm/eventos/cadastrar}">
+			
+			<div class="alert  alert-danger  alert-dismissible" role="alert"
+				th:if="${#fields.hasAnyErrors()}">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+				<div th:each="erro: ${#fields.detailedErrors()}">
+					<i class="fa fa-exclamation-circle"></i>
+					
+					<span th:text="${erro.message}">Mensagem erro.</span>
+				</div>
+			</div>
+
+			<div class="alert  alert-success"
+				th:if="${!#strings.isEmpty(mensagem)}">
+				<i class="fa fa-check-circle"></i>
+
+				<span th:text="${mensagem}">Mensagem sucesso!</span>
+			</div>
+			
+			<input type="hidden" th:field="*{id}"/>
+			<div class="form-row">
+			    <div class="form-group col-md-12">
+			      <label for="inputEmail4">Titulo</label>
+			      <input th:field="*{titulo}" type="text" class="form-control" id="titulo" placeholder="Titulo"/>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label for="inputAddress">Endereço</label>
+			    <input th:field="*{endereco}" type="text" class="form-control" id="endereco"/>
+			</div>
+			<div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="cidade">Cidade</label>
+			      <input th:field="*{cidade}" type="text" class="form-control" id="cidade"/>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="estado">Estado</label>
+			      <select id="estado" class="form-control">
+			        <option>Choose...</option>
+			      </select>
+			    </div>
+			</div>
+			<!-- <div class="form-row">
+			    <div class="form-group col-md-4">
+			      <label for="dataInicio">Data de inicio</label>
+			      <input th:field="*{dataInicio}" type="date"/>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="dataFim">Data de fim</label>
+			      <input th:field="*{dataFim}" type="date"/>
+			    </div>
+			</div>-->			 
+			<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="status">status</label>
+
+							<select id="status" class="form-control"
+								th:field="*{status}">
+								<option value="">Selecione o status</option>
+								<option th:each="status: ${status}"
+									th:value="${status}" th:text="${status}">Opção 1</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+		</form>
+	</div>
 </section>
-<script src="/js/bootstrap.min.js"></script>
+
 </html>

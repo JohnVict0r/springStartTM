@@ -61,16 +61,22 @@ public class Evento {
 	@Enumerated(EnumType.STRING)
 	private StatusEvento status;
 	
-	@ManyToOne(fetch= FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="id_tipo_evento",insertable=true,updatable=true)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private TipoEvento tipo;
 	
-	@ManyToMany(fetch= FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="evento_categoria",
 				joinColumns=@JoinColumn(name="id_evento"),
 				inverseJoinColumns = @JoinColumn(name="id_categoria"))
 	private Collection<Categoria> categoria;
+	
+	
+	//Adicionar Local do Circular do evento
+	
+	//Adicionar Local da imagem do evento
+	
 	
 
 	public TipoEvento getTipo() {
