@@ -8,7 +8,7 @@
 <title>Cadastro de Eventos</title>
 
 </head>
-<script th:src="@{/layout/vendors/jquery/jquery.js}"></script>
+
 <script th:src="@{/layout/javascripts/estados_cidadesJSON.js}"></script>
 <script th:src="@{/layout/javascripts/estados_cidades.js}"></script>
 <section layout:fragment="content">
@@ -60,39 +60,44 @@
 			<div class="form-group row col-md-12">
 			    <div class="form-group col-md-4">
 			      <label for="estado">Estado</label>
-			      <select id="estado" class="form-control">
-			        <option>Choose...</option>
-			        <option>Estado</option>
+			      <select th:field="*{estado}" id="estados" class="form-control">
+			        
+			        
 			      </select>
 			    </div>
 			    <div class="form-group col-md-4">
 			      <label for="cidade">Cidade</label>
-			      <select th:value="*{cidade}" id="cidade" class="form-control">
-			        <option>Choose...</option>
-			        <option>cidade</option>
+			      <select th:field="*{cidade}" id="cidades" class="form-control">
+			        
 			      </select>
 			    </div>
 			    <div class="form-group col-md-4">
-			      <label for="estado">status</label>
-			      <select id="status" class="form-control"
-						th:field="*{status}">
-						<option value="">Selecione o status</option>
-						<option th:each="status: ${status}"
-							th:value="${status}" th:text="${status}">Opção 1</option>
+			      <label for="tipo">Tipo do evento</label>
+			      <select id="tipo" class="form-control"
+						th:field="*{tipo}">
+						<option value="">Selecione o tipo</option>
+						<option th:each="tipo: ${tipos}"
+							th:value="${tipo.id}" th:text="${tipo.nome}">Opção 1</option>
 				</select>
 			    </div>
 			</div>
-			<div class="form-row">
-			    <div class="form-group col-md-4">
-			      <label for="dataInicio">Data de inicio</label>
-			      <input th:date="*{dataInicio}" type="date"/>
-			    </div>
-			    <div class="form-group col-md-4">
-			      <label for="dataFim">Data de fim</label>
-			      <input th:date="*{dataFim}" type="date"/>
-			    </div>
-			</div>			 				
-
+			<div class="form-group row col-lg-12">														
+				<div class="form-group col-lg-3">
+					<label for="dataInicio">Data de inicio</label>
+			      <input class="form-control" th:date="*{dataInicio}" type="date"/>
+				</div>				
+				<div class="form-group col-lg-1"></div>
+				<div class="form-group col-lg-3">
+					<label for="dataFim">Data de fim</label>
+			      <input class="form-control" th:date="*{dataFim}" type="date"/>
+				</div>
+				<div class="form-group col-lg-1"></div>
+				<div class="form-group col-lg-3">
+				<label for="exampleInputFile">Circular do evento</label>
+				<input id="exampleInputFile" type="file">
+				</div>
+			</div>			
+			
 			<div class="form-group row col-md-12">
 				<button class="btn  btn-primary" type="submit">Salvar</button>
 			</div>
@@ -100,5 +105,12 @@
 	</form>
 	</div>
 </section>
+<th:block layout:fragment="extra-javascript">
+ 	<script th:src="@{/javascripts/vendors/jquery-1.9.1.js}"></script>
+    <script th:src="@{/layout/javascripts/estados_cidadesJSON.js}"></script>
+	<script th:src="@{/layout/javascripts/estados_cidades.js}"></script>
+    
+
+</th:block>
 
 </html>

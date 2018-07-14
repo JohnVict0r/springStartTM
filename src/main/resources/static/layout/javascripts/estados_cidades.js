@@ -1,15 +1,15 @@
 $(document).ready(function () {
 
-	var options = '<option value="">---Selecione um estado---</option>';
+	var options = '<option value="">Selecione um estado</option>';
 	$.each(estadosCidadesJson.estados, function (key, val) {
-		options += '<option value="' + val.nome + '">' + val.nome + '</option>';
+		options += '<option th:value="' + val.sigla + '">' + val.sigla + '</option>';
 	});
-
+	
 	$("#estados").html(options);
 
 	$("#estados").change(function () {
 
-		var options_cidades = '<option>---Selecione uma Cidade---</option>';
+		var options_cidades = '<option>Selecione uma Cidade</option>';
 		var str = "";
 
 		$("#estados option:selected").each(function () {
@@ -17,9 +17,9 @@ $(document).ready(function () {
 		});
 
 		$.each(estadosCidadesJson.estados, function (key, val) {
-			if(val.nome == str) {
+			if(val.sigla == str) {
 				$.each(val.cidades, function (key_city, val_city) {
-					options_cidades += '<option value="' + val_city + '">' + val_city + '</option>';
+					options_cidades += '<option th:value="' + val_city + '">' + val_city + '</option>';
 				});
 			}
 		});

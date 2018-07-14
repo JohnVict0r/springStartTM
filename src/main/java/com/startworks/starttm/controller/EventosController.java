@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.startworks.starttm.model.Eventos.Evento;
 import com.startworks.starttm.model.Eventos.StatusEvento;
 import com.startworks.starttm.repository.EventoRepository;
+import com.startworks.starttm.repository.TipoEventoRepository;
 
 @Controller
 @RequestMapping("/starttm/eventos")
@@ -25,6 +26,8 @@ public class EventosController {
 	@Autowired
 	private EventoRepository eventos;
 	
+	@Autowired
+	private TipoEventoRepository tipos;
 	
 	@RequestMapping("")
 	public String eventos() {
@@ -36,7 +39,8 @@ public class EventosController {
 		ModelAndView modelAndView = new ModelAndView("eventos/cadastrar");
 		
 		modelAndView.addObject(evento);
-		modelAndView.addObject("status", StatusEvento.values());		
+		modelAndView.addObject("status", StatusEvento.values());		 		
+		modelAndView.addObject("tipos", tipos.findAll());		
 		
 		return modelAndView;
 	}
@@ -47,9 +51,7 @@ public class EventosController {
 		if (result.hasErrors()) {
 			return novo(evento);
 		}
-		
-		
-		
+		evento.setStatus(StatusEvento.ABERTO);				
 		eventos.save(evento);
 		
 		attributes.addFlashAttribute("mensagem", "Evento salvo com sucesso!");

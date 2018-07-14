@@ -41,8 +41,7 @@ public class Evento {
 	private long id;
 	
 	@NotBlank(message="O Titulo não pode estar em branco")
-	private String titulo;
-	
+	private String titulo;	
 	
 	private String cidade;
 
@@ -77,10 +76,9 @@ public class Evento {
 	private Collection<Categoria> categoria;
 	
 	
-	//Adicionar Local do Circular do evento
+	private String circularEventoFile;
 	
-	//Adicionar Local da imagem do evento
-	
+	private String imagemEventoFile;
 	
 
 	public TipoEvento getTipo() {
