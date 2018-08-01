@@ -75,10 +75,9 @@ public class Evento {
 				inverseJoinColumns = @JoinColumn(name="id_categoria"))
 	private Collection<Categoria> categoria;
 	
+	private String circular;
 	
-	private String circularEventoFile;
-	
-	private String imagemEventoFile;
+	private String imagem;
 	
 
 	public TipoEvento getTipo() {
@@ -169,6 +168,21 @@ public class Evento {
 		this.status = status;
 	}
 	
+	public String getCircular() {
+		return circular;
+	}
+
+	public void setCircular(String circular) {
+		this.circular = circular;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 
 	@Override
 	public int hashCode() {

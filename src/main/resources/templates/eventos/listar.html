@@ -45,8 +45,9 @@
 			    	<thead>
 			    		<tr>
 			    			<th class="text-center col-md-1">#</th>
-			    			<th class="col-md-7">Titulo</th>
-			    			<th class="text-center col-md-1">local</th>
+			    			<th class="col-md-4">Titulo</th>
+			    			<th class="text-center col-md-2">circular</th>
+			    			<th class="text-center col-md-2">local</th>
 			    			<th class="text-center col-md-2" >status</th>
 			    			<th class="col-md-1"></th>
 			    		</tr>
@@ -55,6 +56,7 @@
 			    		<tr th:each="evento : ${eventos}">
 			    			<td class="text-center" th:text="${evento.id}"></td>
 			    			<td th:text="${evento.titulo}"></td>
+			    			<td th:text="${evento.circular}"></td>
 			    			<td th:if="${evento.cidade == null || evento.estado == null}" class="text-center">Não definido</td>
 			    			<td th:if="${evento.cidade != null && evento.estado != null}" th:text="${evento.cidade +'/' +evento.estado}" class="text-center"></td>
 			    			<td class="text-center">
