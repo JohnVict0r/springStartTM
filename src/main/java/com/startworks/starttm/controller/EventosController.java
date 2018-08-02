@@ -63,9 +63,7 @@ public class EventosController {
 	@PostMapping("/cadastrar")
 	public ModelAndView salvar(@RequestParam("circularFile") MultipartFile circular, @Valid Evento evento, BindingResult result,
 			RedirectAttributes attributes) {			
-		
-		
-		
+					
 		try {
 			fileStorage.salvarCircular(circular);			
 		} catch (Exception e) {
