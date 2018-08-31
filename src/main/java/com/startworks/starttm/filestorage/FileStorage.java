@@ -15,26 +15,18 @@ public class FileStorage{
 	private String raiz;
 	
 	@Value("${starttm.disco.diretorio-eventos}")
-	private String diretorioEventos;
+	private String diretorioEventos;	
 	
-	public void salvarCircular(MultipartFile file) {
-		
-		this.salvar(this.diretorioEventos, file);		
-	}
- 
 	
-	public void salvar(String diretorio, MultipartFile file){
-		Path diretorioPath = Paths.get(this.raiz, diretorio);
-		Path arquivoPath = diretorioPath.resolve(file.getOriginalFilename());
-			
+	public void salvar(Path rootLocation, MultipartFile file){					
 		try {
-            Files.createDirectories(diretorioPath);
-            file.transferTo(arquivoPath.toFile());                       
+            Files.copy(file.getInputStream(), rootLocation.resolve(file.getOriginalFilename()));                            
         } catch (Exception e) {
         	throw new RuntimeException("Problemas ao salvar o arquivo: "+file.getOriginalFilename());
         }
-	}	
-	public String getLocalArquivo(MultipartFile file) {
+	}
+	
+	public String getLocalArquivo(Path rootLocation ,MultipartFile file) {
 		
 		Path diretorioPath = Paths.get(this.raiz, this.diretorioEventos);
 		Path arquivoPath = diretorioPath.resolve(file.getOriginalFilename());

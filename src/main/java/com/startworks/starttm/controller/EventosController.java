@@ -1,6 +1,8 @@
 package com.startworks.starttm.controller;
 
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -43,6 +45,8 @@ public class EventosController {
 	
 	@Autowired
 	private FileStorage fileStorage;
+	
+	private final Path rootLocation = Paths.get("src/main/webapp/arquivos/eventos");
 		
 	@RequestMapping("")
 	public String eventos() {
@@ -65,7 +69,17 @@ public class EventosController {
 			RedirectAttributes attributes) {			
 					
 		try {
-			fileStorage.salvarCircular(circular);			
+			
+			fileStorage.salvar(rootLocation, circular);	
+			
+			if (circular.getContentType().equalsIgnoreCase("application/pdf")){
+				System.out.println("pdf!");
+			}else{
+				System.out.println("não é pdf!");
+			}
+			
+			
+			
 		} catch (Exception e) {
 			attributes.addAttribute("message", "Fail! -> uploaded filename: " + circular.getOriginalFilename());
 		}
