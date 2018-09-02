@@ -1,20 +1,13 @@
 package com.startworks.starttm.controller;
 
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,9 +37,7 @@ public class EventosController {
 	private TipoEventoRepository tipos;
 	
 	@Autowired
-	private FileStorage fileStorage;
-	
-	private final Path rootLocation = Paths.get("src/main/webapp/arquivos/eventos");
+	private FileStorage fileStorage;	
 		
 	@RequestMapping("")
 	public String eventos() {
@@ -65,31 +56,46 @@ public class EventosController {
 	}
 	
 	@PostMapping("/cadastrar")
-	public ModelAndView salvar(@RequestParam("circularFile") MultipartFile circular, @Valid Evento evento, BindingResult result,
+	public ModelAndView salvar(
+			@RequestParam("circularFile") MultipartFile circular, 
+			@RequestParam("imagemFile") MultipartFile imagem,
+			@Valid Evento evento, BindingResult result, 
 			RedirectAttributes attributes) {			
 					
-		try {
-			
-			fileStorage.salvar(rootLocation, circular);	
-			
-			if (circular.getContentType().equalsIgnoreCase("application/pdf")){
-				System.out.println("pdf!");
-			}else{
-				System.out.println("não é pdf!");
-			}
-			
-			
-			
-		} catch (Exception e) {
-			attributes.addAttribute("message", "Fail! -> uploaded filename: " + circular.getOriginalFilename());
+		
+		if (!fileStorage.validarArquivo(circular)){			
+			result.addError(new FieldError("circular", "circularFile", "Formato do arquivo da circular deve ter extensão .PDF!"));		
 		}
 		
-		evento.setStatus(StatusEvento.ABERTO);		
-		evento.setCircular(circular.getOriginalFilename());		
+		if (!fileStorage.validarImagem(imagem)){			
+			result.addError(new FieldError("imagem", "imagemFile", "Formato da imagem deve ter extensão Válida, por Exemplo: .JPG .JPEG .PNG!"));		
+		}
 		
 		if (result.hasErrors()) {
 			return novo(evento);
 		}
+		
+		
+		try {
+			
+			fileStorage.salvarCircular(circular);												
+			
+		} catch (Exception e) {			
+			System.out.println("erro ao salvar arquivo da circular");
+		}
+		
+		try {
+			
+			fileStorage.salvarImagem(imagem);												
+			
+		} catch (Exception e) {			
+			System.out.println("erro ao salvar arquivo da circular");
+		}
+		
+		evento.setStatus(StatusEvento.ABERTO);		
+		evento.setCircular(circular.getOriginalFilename());					
+		evento.setImagem(imagem.getOriginalFilename());
+		
 		
 		eventos.save(evento);		
 

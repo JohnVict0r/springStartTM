@@ -25,6 +25,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -40,22 +41,28 @@ public class Evento {
 	@Column(name="id_evento")
 	private long id;
 	
-	@NotBlank(message="O Titulo não pode estar em branco")
+	@NotBlank(message="Informe um Título")
 	private String titulo;	
 	
+	@NotBlank(message="Selecione a cidade")
 	private String cidade;
-
+	
+	@NotBlank(message="Selecione o estado")
 	private String estado;
 	
+	@NotBlank(message="O endereço não pode estar em branco")
 	private String endereco;
 	
 	//Adicionar horario de inicio e fim nas datas
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)	
+	@NotNull(message = "Informe a data de inicio")
 	private Date dataInicio;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
+	@NotNull(message = "Informe a data fim")
 	private Date dataFim;
 	
 	@NumberFormat(pattern = "#,##0.00")
