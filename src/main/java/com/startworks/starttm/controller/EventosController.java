@@ -79,17 +79,13 @@ public class EventosController {
 		try {
 			
 			fileStorage.salvarCircular(circular);												
-			
-		} catch (Exception e) {			
-			System.out.println("erro ao salvar arquivo da circular");
-		}
-		
-		try {
-			
 			fileStorage.salvarImagem(imagem);												
 			
 		} catch (Exception e) {			
-			System.out.println("erro ao salvar arquivo da circular");
+			result.addError(new FieldError("circular", "circularFile", e.getMessage()));
+			e.printStackTrace();
+			return novo(evento);			
+			
 		}
 		
 		evento.setStatus(StatusEvento.ABERTO);		
