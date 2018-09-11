@@ -1,0 +1,215 @@
+.starttm-required > .control-label:after {
+	content: "*";
+}
+.starttm-layout-page {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 60px;
+}
+.starttm-layout-simple-page {
+  background-color: #f6f6f6;
+}
+.starttm-layout-simple-page__container {
+  display: block;
+  max-width: 420px;
+  margin: auto;
+  padding: 0 10px;
+  padding-top: 10%;
+}
+.starttm-layout-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  margin: 0;
+  border-top: 1px solid #eeeeee;
+  transition: all 0.5s;
+}
+@media (min-width: 992px) {
+  .starttm-layout-footer.is-toggled {
+    margin-left: 0;
+  }
+}
+@media (min-width: 992px) {
+  .starttm-layout-footer {
+    margin-left: 210px;
+  }
+}
+.starttm-layout-content {
+  position: relative;
+  margin: 0;
+  margin-top: 50px;
+  transition: all 0.5s;
+}
+@media (min-width: 992px) {
+  .starttm-layout-content.is-toggled {
+    margin-left: 0;
+  }
+}
+@media (min-width: 992px) {
+  .starttm-layout-content {
+    margin-left: 210px;
+  }
+}
+.starttm-layout-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  height: 100%;
+  padding-top: 54px;
+  margin-left: -211px;
+  border-right-color: #e2e2e2;
+  border-right: 1px solid;
+  border-right-color: transparent;
+  overflow-x: hidden;
+  
+  transition: all 0.5s;
+}
+@media (min-width: 992px) {
+  .starttm-layout-sidebar {
+    margin-left: 0px;
+  }
+}
+.starttm-layout-sidebar.is-toggled {
+  margin-left: 0px;
+}
+@media (min-width: 992px) {
+  .starttm-layout-sidebar.is-toggled {
+    margin-left: -211px;
+  }
+}
+.starttm-layout-sidebar__content {
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+  width: 210px;
+}
+
+.starttm-required-fields-text{
+	text-align: center;
+}
+
+/*-------------------------------------------------*\
+  Footer disclaimer
+  - Para usar na informação de copyright no rodapé
+\*-------------------------------------------------*/
+.starttm-footer-disclaimer {
+  font-size: 92%;
+  display: block;
+  color: #777777;
+  line-height: 4;
+  text-align: center;
+}
+/*---------*\
+  Menu
+\*---------*/
+.starttm-menu__list {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.starttm-menu__item {
+  position: relative;
+  display: block;
+}
+.starttm-menu__item > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+.starttm-menu__item > a > i {
+  margin-right: 6px;
+}
+.starttm-menu__item > a:hover,
+.starttm-menu__item > a:focus {
+  background: #eeeeee;
+  text-decoration: none;
+}
+.starttm-menu__item.is-active > a {
+  color: #1e94d2;
+}
+.starttm-menu__item.is-expanded {
+  border-left: 3px solid;
+  border-left-color: #1e94d2;
+  background: #f4f4f4;
+}
+.starttm-menu__item.is-expanded .starttm-menu__navigation-icon:before {
+  content: "\f0d7";
+}
+.starttm-menu__item.is-expanded > .starttm-menu__list {
+  display: block;
+  background: #fafafa;
+}
+.starttm-menu__item.is-expanded > a {
+  margin-left: -3px;
+}
+html,
+body {
+  height: 100%;
+}
+.page-header {
+  padding-bottom: 0px;
+  background-color: #fafbfd;
+}
+.page-header h1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  height: 80px;
+  color: #333333;
+}
+/*---------------------------------------*\
+  Simple panel
+  - Used to login
+\*---------------------------------------*/
+.starttm-simple-panel {
+  color: #777777;
+  text-align: center;
+}
+.starttm-simple-panel__message {
+  padding: 20px 0px;
+}
+.starttm-simple-panel__message.is-error {
+  color: #e70500;
+}
+.starttm-simple-panel__box {
+  padding: 20px;
+  padding-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background-color: #fff;
+}
+.starttm-btn-full-width {
+  width: 100%;
+}
+.starttm-simple-panel__footer {
+  padding: 10px 0;
+}
+/*-----------------------------------------------------------*\
+  Error panel
+  - To be used in simple error pages (404, 500, etc)
+\*-----------------------------------------------------------*/
+.starttm-error-panel {
+  color: #777777;
+  text-align: center;
+}
+.starttm-error-panel__title {
+  font-size: 32px;
+}
+.starttm-error-panel__description {
+  display: block;
+  padding: 18px 0;
+}
+.starttm-error-panel__code {
+  color: #d9d9d9;
+  font-size: 80px;
+  font-weight: normal;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout-padrao}">
+<head>
+	<link href="/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>	
+<section layout:fragment="content">
+
+<div class="page-header">
+		<div class="container-fluid">
+			<h1>
+				Eventos
+			</h1>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		
+		<div class="alert  alert-success"
+				th:if="${!#strings.isEmpty(mensagem)}">
+				<i class="fa fa-check-circle"></i>
+
+				<span th:text="${mensagem}">Mensagem sucesso!</span>
+			</div>
+		
+		<form method="GET" class="form-vertical js-form-loading">		
+			
+			<div class="form-group">
+				<div class="input-group">
+					<input id="nome" type="text" class="form-control" placeholder="Search by nome"autofocus="autofocus"/>
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div>
+			</div>
+	
+			<div class="table-responsive">
+			    <table class="table table-bordered table-striped">
+			    	<thead>
+			    		<tr>
+			    			<th class="text-center col-md-1">#</th>
+			    			<th class="col-md-3">Titulo</th>
+			    			<th class="text-center col-md-2">Data</th>
+			    			<th class="text-center col-md-2">Circular</th>
+			    			<th class="text-center col-md-2">Local</th>
+			    			<th class="text-center col-md-1" >Status</th>
+			    			<th class="col-md-1"></th>
+			    		</tr>
+			    	</thead>
+			    	<tbody>
+			    		<tr th:each="evento : ${eventos}">
+			    			<td class="text-center" th:text="${evento.id}"></td>
+			    			<td th:text="${evento.titulo}"></td>
+			    			<td th:text="${#dates.format(evento.dataInicio, 'dd/MM/yyyy')}" class="text-center"></td>
+			    			<td th:text="${evento.circular}"></td>
+			    			<td th:if="${evento.cidade == null || evento.estado == null}" class="text-center">Não definido</td>
+			    			<td th:if="${evento.cidade != null && evento.estado != null}" th:text="${evento.cidade +'/' +evento.estado}" class="text-center"></td>
+			    			<td class="text-center">
+			    				<span class="p-1 mb-1 text-white" th:text="${evento.status.descricao}"						
+th:classappend="${evento.status.descricao=='Finalizado' ? 'text-danger' : 'text-success'}"></span>
+			    			</td>
+			    			<td class="text-center">
+			    				<i class="fa fa-search" style="cursor:pointer"></i>
+			    				
+			    				<i class="fa fa-trash" style="cursor:pointer"
+			    					data-toggle="modal" data-target="#deleteConfirmationModal"
+			    					data:name="${evento.titulo}"
+									data:url-delete="@{/starttm/eventos/{id}(id=${evento.id})}"></i>
+			    				
+			    			</td>
+			    		</tr>
+			    		<tr th:if="${#lists.isEmpty(eventos)}">
+			    			<td colspan="6">Não foi encontrado eventos Cadastrados.</td>
+						</tr>
+			    		
+			    	</tbody>
+			    </table>
+		    </div>		
+		</form>
+	</div>
+	<div class="modal fade" id="deleteConfirmationModal" role="dialog">
+		<div class="modal-dialog"></div>
+		<div class="modal-content">
+			<form th:action="@{/starttm/eventos/listar}" method="POST">
+				<input type="hidden" name="_method" value="DELETE">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Remover Evento</h4>
+				</div>
+				<div class="modal-body">
+					<span>Are you sure?</span>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="submit" class="btn btn-primary">Excluir</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+<th:block layout:fragment="extra-javascript">
+	<script th:src="@{/layout/javascripts/list.delete-confirmation-modal.js}"></script>
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout-padrao}">
+<head>
+<meta charset="UTF-8">
+<title>Portal Eventos</title>
+</head>
+<body>
+<section layout:fragment="content">
+
+<div class="page-header">
+	<div class="container-fluid">
+		<h1>
+			Portal de Eventos
+		</h1>
+	</div>
+</div>
+<div class="container-fluid">
+	
+	<div class="card">
+	  <div class="card-header">
+	    Eventos
+	  </div>
+	  <div class="card-body">
+	    <div class="row">
+			<div class="card-deck">
+			
+			  <div class="card">
+			    <div class="card-body">
+			      <h5 class="card-title">Cadastrar Eventos</h5>
+			      <p class="card-text">Cadastre Eventos para que os atletas poderem se increver e participar</p>
+			      <a href="/starttm/eventos/cadastrar" class="btn btn-primary">Cadastrar</a>
+			      
+			    </div>
+			  </div>
+			  <div class="card">
+			    <div class="card-body">
+			      <h5 class="card-title">Alterar Eventos</h5>
+			      <p class="card-text">Corrija possiveis erros no cadastramento dos eventos ainda em aberto</p>
+			      <a href="/starttm/eventos/alterar" class="btn btn-primary">Alterar</a>
+			    </div>
+			  </div> <div class="card">
+			    <div class="card-body">
+			      <h5 class="card-title">Listar Eventos</h5>
+			      <p class="card-text">Listar os eventos cadastrado no sistema</p>
+			      <a href="/starttm/eventos/listar" class="btn btn-primary">Listar</a>
+			    </div>
+			  </div>
+			</div>
+			</div>
+			  
+	</div>
+</div>
+	
+<div class="panel panel-default">
+  <div class="panel-body">
+    Basic panel example
+  </div>
+</div>
+
+</div>
+
+</section>
+</body>
+</html>

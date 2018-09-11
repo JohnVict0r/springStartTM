@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"	
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout-padrao}">
+<head>
+<meta charset="UTF-8"/>
+<title>Cadastro de Eventos</title>
+
+</head>
+
+<script th:src="@{/layout/javascripts/estados_cidadesJSON.js}"></script>
+<script th:src="@{/layout/javascripts/estados_cidades.js}"></script>
+<section layout:fragment="content">
+
+	<div class="page-header">
+		<div class="container-fluid">
+				<div class="col-md-8">
+					<h1>
+						Cadastro Evento
+					</h1>
+				</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+	<div class="card new-card">
+	
+	<form method="POST" class="form-horizontal js-form-loading"
+			th:object="${evento}" th:action="@{/starttm/eventos/cadastrar}" enctype="multipart/form-data">
+			
+			<div class="alert  alert-danger  alert-dismissible" role="alert"
+				th:if="${#fields.hasAnyErrors()}">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+				<div th:each="erro: ${#fields.detailedErrors()}">
+					<i class="fa fa-exclamation-circle"></i>
+					
+					<span th:text="${erro.message}">Mensagem erro.</span>
+				</div>
+			</div>
+
+			<div class="alert  alert-success"
+				th:if="${!#strings.isEmpty(mensagem)}">
+				<i class="fa fa-check-circle"></i>
+
+				<span th:text="${mensagem}">Mensagem sucesso!</span>
+			</div>								
+			
+			<div class="form-group row col-md-12">				   
+			      <label for="titulo">Titulo</label>
+			      <input th:field="*{titulo}" type="text" class="form-control" id="titulo" placeholder="Titulo"/>				    
+			</div>
+			<div class="form-group row col-md-12">
+			    <label for="endereco">Endereço</label>
+			    <input th:field="*{endereco}" type="text" class="form-control" id="endereco" placeholder="Endereço"/>
+			</div>
+			<div class="form-group row col-md-12">
+			    <div class="form-group col-md-4">
+			      <label for="estado">Estado</label>			     
+			      <select th:field="*{estado}" id="estados" class="form-control">
+			      	<option value="">Selecione um estado</option>  			        
+			      </select>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="cidade">Cidade</label>			      
+			      <select th:field="*{cidade}" id="cidades" class="form-control">
+			      	<option value="">Selecione uma cidade</option>  
+			      </select>
+			    </div>
+			    <div class="form-group col-md-4">
+			      <label for="tipo">Tipo do evento</label>
+			      <select id="tipo" class="form-control"
+						th:field="*{tipo}">
+						<option value="">Selecione o tipo</option>
+						<option th:each="tipo: ${tipos}"
+							th:value="${tipo.id}" th:text="${tipo.nome}"></option>
+				</select>
+			    </div>
+			</div>
+			<div class="form-group row col-lg-12">														
+				<div class="form-group col-lg-2">
+					<label for="dataInicio">Data de inicio</label>
+			      <input class="form-control" th:field="*{dataInicio}" type="date"/>
+				</div>				
+				<div class="form-group col-lg-1"></div>
+				<div class="form-group col-lg-2">
+					<label for="dataFim">Data de fim</label>
+			      <input class="form-control" th:field="*{dataFim}" type="date"/>
+				</div>
+				
+				<div class="form-group col-lg-1"></div>
+				
+				
+								
+								
+			</div>			
+			<div class="form-group row col-lg-12">
+				<div class="form-group col-lg-2">			
+					<label>Circular do evento</label>
+					<input type="file" name="circularFile" required="true">
+				</div>
+			</div>
+			
+			<div class="form-group row col-lg-12">
+				<div class="form-group col-lg-2">
+					<label>Imagem do evento</label>
+					<input type="file" name="imagemFile" required="true">
+				</div>
+			</div>
+			
+			
+			
+			<div class="form-group row col-md-12">
+				<input class="btn  btn-primary" type="submit" value="salvar"/>
+			</div>
+		</div>
+	</form>
+	</div>
+</section>
+<th:block layout:fragment="extra-javascript">
+ 	<script th:src="@{/javascripts/vendors/jquery-1.9.1.js}"></script>
+    <script th:src="@{/layout/javascripts/estados_cidadesJSON.js}"></script>
+	<script th:src="@{/layout/javascripts/estados_cidades.js}"></script>
+    
+
+</th:block>
+
+</html>

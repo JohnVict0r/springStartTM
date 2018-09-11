@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout-public}">
+<head>
+<meta charset="UTF-8">
+<title>Start TM - Dê um start nos seus eventos de tênis de mesa</title>
+</head>
+<body>
+<section layout:fragment="content">
+
+<div class="jumbotron">
+  <div class="container">
+  <h1>Bem vindos ao sistema Start TM!</h1>
+  <p>Este sistema foi desenvolvido de forma que seja proporcionado a você uma ótima experiência nos eventos de Tênis de Mesa.</p>
+  <p>Está pronto para dar um start nos seus eventos?</p>
+  <p><a class="btn btn-primary btn-lg" href="/starttm/" role="button">Acessar sistema</a></p>
+  </div>
+</div>
+
+<div class="container">
+	
+	<div class="row">
+	  <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	      <img th:src="@{/layout/images/fpotm.jpg}" alt="FPOTM" class="img-thumbnail"/>
+	      <div class="caption">
+	        <h3> 1ª Etapa do Campeonato Estadual 2018</h3>
+	        <p>Local: Mossoró-RN</p>
+	        <p>Data: 24/03/2018 à 25/03/2018</p>
+	        <p>Status: <span class="text-danger">Finalizado</span></p>
+	        <p><a href="#" class="btn btn-default" role="button">Saiba mais</a></p>
+	      </div>
+	    </div>
+	  </div>
+	    <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	      <img th:src="@{/layout/images/fpotm.jpg}" alt="FPOTM" class="img-thumbnail"/>
+	      <div class="caption">
+	        <h3> 2ª Etapa do Campeonato Estadual 2018</h3>
+	        <p>Local: Parnamirim-RN</p>
+	        <p>Data: 09/06/2018 à 10/06/2018</p>
+	        <p>Status: <span class="text-danger">Finalizado</span></p>
+	        <p>
+	        	<a href="#" class="btn btn-default" role="button">Saiba mais</a>
+	        </p>
+	      </div>
+	    </div>
+	  </div>
+	    <div class="col-sm-6 col-md-4">
+	    <div class="thumbnail">
+	      <img th:src="@{/layout/images/fpotm.jpg}" alt="FPOTM" class="img-thumbnail"/>
+	      <div class="caption">
+	        <h3> 3ª Etapa do Campeonato estadual 2018</h3>
+	        <p>Local: Natal-RN</p>
+	        <p>Data: 28/07/2018 à 29/07/2018</p>
+	        <p>Status: <span class="text-success">Aberto</span></p>
+	        <p>		   
+		        <a href="#" class="btn btn-default" role="button">Saiba mais</a>
+		        <a href="#" class="btn btn-primary" role="button">Inscrever-se</a> 
+		    </p>
+	      </div>
+	    </div>
+	  </div>
+	</div>	
+	
+	
+</div>
+</section>
+
+</body>
+</html>
